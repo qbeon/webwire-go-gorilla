@@ -11,7 +11,11 @@ import (
 
 type TestSrvImpl struct{}
 
-func (tsi *TestSrvImpl) OnClientConnected(_ webwire.Connection)             {}
+func (tsi *TestSrvImpl) OnClientConnected(
+	_ webwire.ConnectionOptions,
+	_ webwire.Connection,
+) {
+}
 func (tsi *TestSrvImpl) OnClientDisconnected(_ webwire.Connection, _ error) {}
 func (tsi *TestSrvImpl) OnSignal(
 	_ context.Context,

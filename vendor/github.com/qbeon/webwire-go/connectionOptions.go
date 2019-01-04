@@ -1,4 +1,4 @@
-package connopt
+package webwire
 
 // ConnectionAcceptance defines whether a connection is to be accepted
 type ConnectionAcceptance byte
@@ -14,6 +14,10 @@ const (
 // ConnectionOptions represents the options applied to an individual connection
 // during accept
 type ConnectionOptions struct {
+	// Info stores arbitrary connection information provided by the transport
+	// layer implementation
+	Info map[int]interface{}
+
 	// Connection refuses the incoming connection when explicitly set to
 	// wwr.Refuse. It's set to wwr.Accept by default.
 	Connection ConnectionAcceptance
