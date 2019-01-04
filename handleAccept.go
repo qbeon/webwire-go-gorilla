@@ -28,6 +28,9 @@ func (srv *Transport) handleAccept(
 	connectionOptions := webwire.ConnectionOptions{
 		Connection:       webwire.Accept,
 		ConcurrencyLimit: 0,
+		Info: map[int]interface{}{
+			0: []byte(req.UserAgent()),
+		},
 	}
 	if srv.BeforeUpgrade != nil {
 		connectionOptions = srv.BeforeUpgrade(resp, req)
@@ -50,9 +53,6 @@ func (srv *Transport) handleAccept(
 		)
 		return
 	}
-
-	// Pass user agent to connection info
-	connectionOptions.Info[0] = []byte(req.UserAgent())
 
 	srv.handleConnection(connectionOptions, conn)
 }
