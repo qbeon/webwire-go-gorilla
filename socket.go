@@ -54,7 +54,7 @@ func (sock *Socket) Dial(deadline time.Time) (err error) {
 	connection, _, err := sock.dialer.Dial(sock.serverAddr.String(), nil)
 	if err != nil {
 		sock.lock.Unlock()
-		return webwire.DisconnectedErr{
+		return webwire.ErrDisconnected{
 			Cause: fmt.Errorf("dial failure: %s", err),
 		}
 	}
@@ -88,7 +88,7 @@ func (sock *Socket) GetWriter() (io.WriteCloser, error) {
 	// Check connection status
 	if !sock.IsConnected() {
 		sock.writeLock.Unlock()
-		return nil, webwire.DisconnectedErr{
+		return nil, webwire.ErrDisconnected{
 			Cause: fmt.Errorf("can't write to a closed socket"),
 		}
 	}
@@ -112,7 +112,7 @@ func (sock *Socket) Read(
 	// Check connection status
 	if !sock.IsConnected() {
 		sock.readLock.Unlock()
-		return ErrSockRead{cause: webwire.DisconnectedErr{
+		return ErrSockRead{cause: webwire.ErrDisconnected{
 			Cause: fmt.Errorf("can't read closed socket"),
 		}}
 	}

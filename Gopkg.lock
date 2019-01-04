@@ -27,7 +27,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:1be23934518f8e70128f8b174b10355da41518798e66ecc164ba828af9ad5ef8"
+  digest = "1:a5b5d5a581e8a272df2638b3eedaa74ce966c46f33c087fdef9d3dce3bff375c"
   name = "github.com/qbeon/webwire-go"
   packages = [
     ".",
@@ -35,7 +35,7 @@
     "payload",
   ]
   pruneopts = "UT"
-  revision = "0adb20f3068c22ce576a263906ba745e45e3931d"
+  revision = "f99345781010a12e764dbe5c81497ee311b84fb8"
 
 [[projects]]
   digest = "1:c40d65817cdd41fac9aa7af8bed56927bb2d6d47e4fea566a74880f5c2b1c41e"
